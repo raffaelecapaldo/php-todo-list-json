@@ -29,18 +29,18 @@ createApp({
                 todo: this.text,
                 done: false,
             }
-            axios.post(this.apiUrl, newTodo, {headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {
-                this.thingsToDo = res.data;
-                setTimeout(this.todoColor);
-                
-            });
+            this.sendData(newTodo);
             this.text = "";
             this.error = false;
 
 
         },
         deleteList(index) {
-            this.thingsToDo.splice(index, 1)
+            const data = {
+                deleteIndex: index
+            }
+            this.sendData(data);
+            
         },
         checked(index) {
             if (this.thingsToDo[index].done === false) { //Se done è falso
@@ -49,6 +49,13 @@ createApp({
                 this.thingsToDo[index].done = false; //Se era vero, ripassa a false
 
             }
+        },
+        sendData(data) {
+            axios.post(this.apiUrl, data, {headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {
+                this.thingsToDo = res.data;
+                setTimeout(this.todoColor);
+                
+            });
         },
         randomHex() {
             //Si ringrazia: https://www.w3resource.com/javascript-exercises/fundamental/javascript-fundamental-exercise-11.php

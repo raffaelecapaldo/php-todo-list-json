@@ -6,6 +6,12 @@
 //Leggo il file json e lo decodo
 $phpList = json_decode(file_get_contents('./data/data.json'), true);
 
+//Se c'è delete index settato
+if (isset($_POST['deleteIndex'])) {
+$indexToRemove = $_POST['deleteIndex'];
+array_splice($phpList, $indexToRemove, 1);//recuperato l'indice da POST, rimuovi l'item corrispondente dall'aray
+}
+
 //Se c'è todo settato
 if (isset($_POST['todo'])) {
     $todo = $_POST['todo'];
