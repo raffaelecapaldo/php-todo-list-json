@@ -43,12 +43,10 @@ createApp({
             
         },
         checked(index) {
-            if (this.thingsToDo[index].done === false) { //Se done è falso
-                this.thingsToDo[index].done = true; //Passa a true
-            } else {
-                this.thingsToDo[index].done = false; //Se era vero, ripassa a false
-
-            }
+          const data = {
+            checkIndex: index
+          }
+          this.sendData(data);
         },
         sendData(data) {
             axios.post(this.apiUrl, data, {headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {

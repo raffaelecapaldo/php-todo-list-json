@@ -1,10 +1,12 @@
 <?php 
-
-
-
-
 //Leggo il file json e lo decodo
 $phpList = json_decode(file_get_contents('./data/data.json'), true);
+
+//Se c'è checkIndex settato 
+if(isset($_POST['checkIndex'])) {
+    $indexToCheck = $_POST['checkIndex'];
+    $phpList[$indexToCheck]['done'] = !$phpList[$indexToCheck]['done'];
+}
 
 //Se c'è delete index settato
 if (isset($_POST['deleteIndex'])) {
