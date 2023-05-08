@@ -12,7 +12,7 @@ if (isset($_POST['todo'])) {
     $done = $_POST['done'];
     $newtodo = [//Creo un nuovo array associativo con ciò che mi serve
         'todo' => $todo,
-        'done' => $done//viene inviato come stringa e non booleano, dopo mangiato vedo
+        'done' => filter_var($done, FILTER_VALIDATE_BOOLEAN)//rendi stringa nel formato booleano
     ];
     array_push($phpList, $newtodo);//e lo pusho all'array decodificato
 

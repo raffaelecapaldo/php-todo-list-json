@@ -31,12 +31,12 @@ createApp({
             }
             axios.post(this.apiUrl, newTodo, {headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {
                 this.thingsToDo = res.data;
+                setTimeout(this.todoColor);
                 
             });
             this.text = "";
             this.error = false;
-            setTimeout(this.todoColor) //Usato setTimeout per rallentare di un minimo l'esecuzione, altriimenti
-            //l'ultimo li sarebbe rimasto bianco
+
 
         },
         deleteList(index) {
