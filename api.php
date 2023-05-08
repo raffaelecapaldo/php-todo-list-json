@@ -8,6 +8,11 @@ if(isset($_POST['checkIndex']) && ctype_digit($_POST['checkIndex'])) {
     $phpList[$indexToCheck]['done'] = !$phpList[$indexToCheck]['done'];//Imposta il valore inverso di done a quell'indice
 }
 
+//Se c'è removeAll svuota il file json
+if (isset($_POST['removeAll'])) {
+    $phpList = [];//Svuota array
+}
+
 //Se c'è delete index settato ed è un numero
 if (isset($_POST['deleteIndex']) && ctype_digit($_POST['deleteIndex'])) {
 $indexToRemove = $_POST['deleteIndex'];

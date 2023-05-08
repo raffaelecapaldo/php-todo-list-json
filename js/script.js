@@ -8,17 +8,17 @@ createApp({
             thingsToDo: [],
             text: "",
             error: false,
-            apiUrl:'api.php'
+            apiUrl: 'api.php'
         }
     },
     methods: {
         readList() {
             axios.get(this.apiUrl).then((res) => {
                 this.thingsToDo = res.data;
-                
+
             });
             setTimeout(this.todoColor, 300)
-                
+
         },
         insert() {
             if (this.text.length < 3) {
@@ -40,19 +40,25 @@ createApp({
                 deleteIndex: index
             }
             this.sendData(data);
-            
+
         },
         checked(index) {
-          const data = {
-            checkIndex: index
-          }
-          this.sendData(data);
+            const data = {
+                checkIndex: index
+            }
+            this.sendData(data);
+        },
+        removeAll() {
+            const data = {
+                removeAll: true
+            }
+            this.sendData(data);
         },
         sendData(data) {
-            axios.post(this.apiUrl, data, {headers: { 'Content-Type': 'multipart/form-data' }}).then((res) => {
+            axios.post(this.apiUrl, data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((res) => {
                 this.thingsToDo = res.data;
                 setTimeout(this.todoColor);
-                
+
             });
         },
         randomHex() {

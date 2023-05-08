@@ -44,9 +44,11 @@
           </transition-group>
           <li id="add" class="list-group-item d-flex justify-content-center">
             <div class="input-group w-75">
-              <input @keyup.enter="insert " type="text" v-model="text" class="form-control" placeholder="Cose da fare">
-              <button @click="insert" class="btn btn-success " type="button" id="button-addon2">Aggiungi</button>
+              <input @keyup.enter="insert()" type="text" v-model="text" class="form-control" placeholder="Cose da fare">
+              <button @click="insert()" class="btn btn-success " type="button" id="button-addon2">Aggiungi</button>
             </div>
+            <button @click="removeAll()" class="btn btn-danger ms-1" type="button" id="button-addon2">Rimuovi tutto</button>
+
           </li>
 
         </ul>
